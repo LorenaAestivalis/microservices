@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Listado de Ofertas de Trabajo</title>
+</head>
+<body>
+<h1></h1>
+<ol>
+    <li th:each="tmpEmp:${empleos}" th:text="${tmpEmp}"></li>
+    <!--
+    tempEmp es la variable temporal que traera cada elementode la lista
+    primero se definio
+    se uso dentro de la exxpresion th:text
+    -->
+</ol>
+<h2></h2>
+</body>
+</html>

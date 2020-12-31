@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    </head>
+<body>
+
+<img th:src="@{/images/logo.png}"width="100" height="100">
+<h1>Lista de vacantes</h1>
+<table class="table table-striped table-dordered table-hover">
+    <tr>
+        <th>Logo</th>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Fecha De Pub</th>
+        <th>Salario Ofrecido</th>
+        <th>Descripcion</th>
+        <th>Destacado</th>
+        <th>Detalle</th>
+        <th>Borrar</th>
+    </tr>
+    <tr th:each="tempVacante:${vacantes}" >
+        <td>
+
+            <img th:src="@{/images/{imgTemp} (imgTemp=${tempVacante.imagen})}" width="136" height="136">
+
+        </td>
+        <!-- 1. declaramos la variable temporal  imgTemp
+        2. en tiempo de ejecucion -->
+        <td th:text="${tempVacante.id}"></td>
+        <td th:text="${tempVacante.nombre}"></td>
+        <td th:text="${tempVacante.fecha}">50</td>
+        <td th:text="${tempVacante.salario}"></td>
+        <td th:text="${tempVacante.descripcion}"></td>
+       <!--
+        <td th:if="${vacante.destacado == 1  ? 'Si' : 'No' }" ></td>
+        -->
+        <td >
+           <span th:if="${tempVacante.destacado==1}" class="badge badge-success">Si</span>
+            <span th:unless="${tempVacante.destacado==1}" class="badge badge-danger">NO</span>
+        </td>
+        <td>
+            <a th:href="@{/vacantes/view/{id} (id=${tempVacante.id}) }" class="btn btn-success">Detalle</a>
+        </td>
+        <td>
+            <a th:href="@{/vacantes/delete/{id} (id=${tempVacante.id}) }" class="btn btn-danger">Borrar</a>
+
+        </td>
+    </tr>
+</table>
+<h2></h2>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> <title>Title</title>
+</body>
+</html>
